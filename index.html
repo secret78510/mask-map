@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wask map</title>
+    <link rel=stylesheet href=https://use.fontawesome.com/releases/v5.1.0/css/all.css>
+    <link rel="stylesheet" href="css/all.css">
+</head>
+
+<body>
+    <div class="navSide">
+        <div class="navSide-header">
+            <div class="navSide-icon">
+                <a href="#">
+                    <i class="fas fa-chevron-left" onclick="hide()"></i>
+                </a>
+            </div>
+            <h2></h2>
+            <p></p>
+            <small class="odd">身分證末碼為<span>1,3,5,7,9</span>可購買</small>
+            <small class="even">身分證末碼為<span>2,4,6,8,0</span>可購買</small>
+            <small class="all">身分證末碼不論為何皆可購買</small>
+            <div class="clearfix" style="clear: both;"></div>
+            <div class="navSide-select">      
+                <select name="city" id="city"></select>
+                <select name="area" id="area"></select>
+            </div>
+            <div class="navSide-input">
+                <input type="text" id="search" " placeholder="搜尋,區域,地址">
+                <label for="search">
+                    <i class="fas fa-search"></i>
+                </label>
+            </div>
+        </div>
+        <div class="navSide-body">
+            
+        </div>
+    </div>
+    <script src="js/all.js"></script>
+</body>
+
+</html>

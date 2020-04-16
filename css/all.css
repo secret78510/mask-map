@@ -1,0 +1,173 @@
+html, body, div, span, applet, object, iframe,
+p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  font-family: "Microsoft JhengHei";
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  max-width: 100%;
+}
+
+.navSide {
+  width: 350px;
+  z-index: 1px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.navSide .navSide-header {
+  background-color: #3498db;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.navSide .navSide-header .navSide-icon {
+  position: absolute;
+  bottom: -72px;
+  right: -18px;
+  font-size: 24px;
+  background-color: #3498db;
+  padding: 20px 2px;
+  color: #fff;
+  border-radius: 0 4px 4px 0;
+}
+
+.navSide .navSide-header h2 {
+  float: left;
+}
+
+.navSide .navSide-header P {
+  float: right;
+  font-size: 14px;
+}
+
+.navSide .navSide-header small {
+  float: right;
+  display: none;
+}
+
+.navSide .navSide-header span {
+  color: #f1c40f;
+  font-size: 20px;
+}
+
+.navSide .navSide-header .navSide-input {
+  position: relative;
+  margin-top: 10px;
+}
+
+.navSide .navSide-header .navSide-input input {
+  width: 100%;
+  border-radius: 20px;
+  outline: 0;
+  border: 0;
+  padding: 10px;
+}
+
+.navSide .navSide-header .navSide-input label {
+  cursor: pointer;
+}
+
+.navSide .navSide-header .navSide-input i {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  font-size: 20px;
+}
+
+.navSide .navSide-body {
+  overflow-y: scroll;
+  height: 80vh;
+}
+
+.navSide .navSide-body .navSide-item {
+  width: 100%;
+  padding: 10px 20px;
+  border-bottom: 1px solid #34495e;
+}
+
+.navSide .navSide-body .navSide-item p {
+  padding: 4px 0;
+}
+
+.navSide .navSide-body .navSide-item .child, .navSide .navSide-body .navSide-item .adult {
+  width: 45%;
+  border: 0;
+  border-radius: 30px;
+  padding: 4px 0;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  outline: 0;
+  cursor: pointer;
+}
+
+.hide {
+  width: 0;
+  height: 0;
+}
+
+.hide .navSide-header {
+  padding: 0;
+}
+
+.hide .navSide-header h2 {
+  display: none;
+}
+
+.hide .child, .hide .adult {
+  display: none !important;
+}
+/*# sourceMappingURL=all.css.map */
