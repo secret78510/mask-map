@@ -11,20 +11,21 @@ let area = document.querySelector('#area');
     xhr.onload = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             let json = JSON.parse(xhr.response)
-            for (let i = 0; i < json.features.length; i++) {
-                data.push(json.features[i])
-            }
-            pharmacyShow('苗栗縣');
+            //將值記錄在data陣列裡
+            json.features.forEach(item => data.push(item))
+            //預設值
+            pharmacyShow('苗栗縣')
             citySelect()
+            areaSelect()
+            day()
         }
     }
 }())
 //監聽
 search.addEventListener('keypress', searchCity);
 searchLabel.addEventListener('click', searchCity);
-city.addEventListener('change', searchCity);
-area.addEventListener('change', searchCity);
-
+city.addEventListener('change', citySelect);
+area.addEventListener('change', areaSelect);
 //navSide-header
 function day() {
     let time = new Date();
@@ -43,7 +44,7 @@ function day() {
         document.querySelector('.all').style.display = 'block';
     }
 }
-day()
+
 //將星期切換成中文
 function dayChinese(day) {
     switch (day) {
@@ -73,11 +74,12 @@ function hide() {
 
 //navSide-body
 function pharmacyShow(county) {
+    //過濾 沒有使用城鎮 就回傳城市
     const cityName = data.filter(item => {
-        if (item.properties.town === county) {
-           return item.properties.town === county
+        if (item.properties.town === county ) {
+            return item.properties.town === county 
         } else {
-          return  item.properties.county === county
+            return item.properties.county === county 
         }
     })
     //顯示藥局畫面
@@ -119,20 +121,20 @@ function pharmacyShow(county) {
 
 }
 //input
-function searchCity(e) {
+function searchCity() {
     event.preventDefault;
     //值等於input裡面的value
     let searchTxt = search.value;
-
-    //input
-    pharmacyShow(searchTxt);
-    //select
-    pharmacyShow(e.target.value)
-    //更新area裡的值
-    areaSelect()
+    //空白就提醒 有值就回傳
+    if(searchTxt === ''){
+        return alert('請輸入內容')
+    }else{
+      return  pharmacyShow(searchTxt)
+    }
 }
-//seclect
-function citySelect() {
+//seclect city選單
+function citySelect(e) {
+    
     //城市顯示
     const cityFilter = [];
     //過濾重複城市名稱 沒有這個城市名稱就加入
@@ -141,34 +143,52 @@ function citySelect() {
             cityFilter.push(item.properties.county)
         }
     })
+    //如果有空值 就刪除
+    cityFilter.find((item,index)=>{
+        console.log(item)
+        if(item ==''){
+            return cityFilter.splice(index,1)
+        }
+    })
+
     //把內容用option 然後加入到select
     for (let i = 0; i < cityFilter.length; i++) {
         let option = document.createElement('option');
         option.textContent = cityFilter[i];
+        option.setAttribute('value', cityFilter[i])
         city.appendChild(option);
     }
-
-    areaSelect()
-}
-function areaSelect(){
-    //區域顯示
-    //當每次city換城市 就把area清空 才能把值帶進去
-    
+    //如果有讀取到事件的值就觸發 怕在XML後顯示錯誤
+    if(e){
+        pharmacyShow(e.target.value)
+    }
+    //清空area裡面全部的option 避免重複
     while (area.hasChildNodes()) {
         area.removeChild(area.firstChild);
-      }
-    let areaFilter = [];
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].properties.county === city.value) {
-            areaFilter.push(data[i].properties.town)
-        }
     }
-    //將重複的值 消除 然後加入到area select
+    //再把option 加入area 
+    areaSelect()
+}
+// 區域選單
+function areaSelect(e) {
+    //區域顯示
+    let areaFilter = [];
+    data.forEach(item=>{
+        if(item.properties.county.match(city.value)){
+            return areaFilter.push(item.properties.town)
+        }
+    }) 
+     //將重複的值 消除 然後加入到area select
     let areaSet = new Set(areaFilter);
-    for(let value of areaSet.values()){
+    for (let value of areaSet.values()) {
         let option = document.createElement('option');
         option.textContent = value;
+        option.setAttribute('value', value)
         area.appendChild(option);
+    }
+    //如果有讀取到事件的值就觸發 怕在XML後顯示錯誤
+    if(e){
+        pharmacyShow(e.target.value)
     }
     
 }

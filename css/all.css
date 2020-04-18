@@ -84,6 +84,10 @@ body {
   border-radius: 0 4px 4px 0;
 }
 
+.navSide .navSide-header .navSide-icon a {
+  color: #34495e;
+}
+
 .navSide .navSide-header h2 {
   float: left;
 }
@@ -127,6 +131,24 @@ body {
   font-size: 20px;
 }
 
+.navSide .navSide-header #city {
+  border: 0;
+  outline: 0;
+  padding: 5px 10px;
+  border-radius: 20px;
+  width: 49%;
+  text-align: center;
+}
+
+.navSide .navSide-header #area {
+  border: 0;
+  outline: 0;
+  padding: 5px 10px;
+  border-radius: 20px;
+  width: 49%;
+  text-align: center;
+}
+
 .navSide .navSide-body {
   overflow-y: scroll;
   height: 80vh;
@@ -167,7 +189,11 @@ body {
   display: none;
 }
 
-.hide .child, .hide .adult {
-  display: none !important;
+.hide #area {
+  display: none;
+}
+
+.hide #city {
+  display: none;
 }
 /*# sourceMappingURL=all.css.map */

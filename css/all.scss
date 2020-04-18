@@ -33,6 +33,9 @@ $warning: #f1c40f; //身分證末碼
             padding: 20px 2px;
             color: #fff;
             border-radius: 0 4px 4px 0;
+            a{
+                color: $secondary;
+            }
         }
         h2 {
             float: left;
@@ -68,8 +71,26 @@ $warning: #f1c40f; //身分證末碼
             right: 12px;
             top: 10px;
             font-size: 20px;
+            
+        }
+        #city{
+            border: 0;
+            outline: 0;
+            padding: 5px 10px;
+            border-radius: 20px;
+            width: 49%;
+            text-align: center;
+        }
+        #area{
+            border: 0;
+            outline: 0;
+            padding: 5px 10px;
+            border-radius: 20px;
+            width: 49%;
+            text-align: center;
         }
     }
+   
     .navSide-body {
         overflow-y: scroll;
         height: 80vh;
@@ -104,5 +125,10 @@ $warning: #f1c40f; //身分證末碼
             display: none;
         }
     }
-    
+    #area{
+        display: none;
+    }
+    #city{
+        display: none;
+    }
 }
