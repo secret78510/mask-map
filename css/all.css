@@ -2,7 +2,7 @@ html, body, div, span, applet, object, iframe,
 p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
+small, strike, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
@@ -58,34 +58,47 @@ table {
 
 body {
   max-width: 100%;
+  position: relative;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.navSide-icon {
+  position: absolute;
+  top: 130px;
+  left: 350px;
+  font-size: 24px;
+  background-color: #3498db;
+  padding: 20px 2px;
+  color: #fff;
+  border-radius: 0 4px 4px 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  z-index: 1000;
+}
+
+.navSide-icon a {
+  color: #34495e;
 }
 
 .navSide {
   width: 350px;
-  z-index: 1px;
+  z-index: 1000;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  top: 0;
+  bottom: 0;
+  position: absolute;
 }
 
 .navSide .navSide-header {
   background-color: #3498db;
   padding: 10px 20px;
   position: relative;
-}
-
-.navSide .navSide-header .navSide-icon {
-  position: absolute;
-  bottom: -72px;
-  right: -18px;
-  font-size: 24px;
-  background-color: #3498db;
-  padding: 20px 2px;
-  color: #fff;
-  border-radius: 0 4px 4px 0;
-}
-
-.navSide .navSide-header .navSide-icon a {
-  color: #34495e;
 }
 
 .navSide .navSide-header h2 {
@@ -131,7 +144,7 @@ body {
   font-size: 20px;
 }
 
-.navSide .navSide-header #city {
+.navSide .navSide-header #county {
   border: 0;
   outline: 0;
   padding: 5px 10px;
@@ -140,7 +153,7 @@ body {
   text-align: center;
 }
 
-.navSide .navSide-header #area {
+.navSide .navSide-header #town {
   border: 0;
   outline: 0;
   padding: 5px 10px;
@@ -158,6 +171,7 @@ body {
   width: 100%;
   padding: 10px 20px;
   border-bottom: 1px solid #34495e;
+  background-color: #fff;
 }
 
 .navSide .navSide-body .navSide-item p {
@@ -178,22 +192,99 @@ body {
 
 .hide {
   width: 0;
-  height: 0;
+  overflow: hidden;
 }
 
-.hide .navSide-header {
-  padding: 0;
+.reduce {
+  left: 0;
 }
 
-.hide .navSide-header h2 {
-  display: none;
+.mapClass {
+  max-width: calc( 100% - 350px);
+  height: 100%;
+  -webkit-transform: translateX(350px);
+          transform: translateX(350px);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
-.hide #area {
-  display: none;
+.zoom {
+  max-width: 100%;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
 
-.hide #city {
-  display: none;
+.loader {
+  position: absolute;
+  z-index: 2000;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #33CCFF;
+}
+
+.loader .loader-body {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 16px solid #ffffff;
+  border-radius: 50%;
+  border-top: 16px solid 	#77FFEE;
+  -webkit-animation: loading 1s linear infinite;
+          animation: loading 1s linear infinite;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .navSide {
+    width: 220px;
+  }
+  .mapClass {
+    max-width: calc( 100% - 220px);
+    height: 100%;
+    -webkit-transform: translateX(220px);
+            transform: translateX(220px);
+  }
+}
+
+@media (max-width: 420px) {
+  .navSide {
+    width: 150px;
+  }
+  .mapClass {
+    max-width: calc( 100% - 150px);
+    height: 100%;
+    -webkit-transform: translateX(150px);
+            transform: translateX(150px);
+  }
 }
 /*# sourceMappingURL=all.css.map */

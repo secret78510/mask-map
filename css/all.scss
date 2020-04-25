@@ -7,36 +7,54 @@
 }
 body {
     max-width: 100%;
+    position: relative;
 }
 //變數
 $info: #3498db; //口罩足夠
 $danger: #e74c3c; //口罩短缺
 $secondary: #34495e; //口罩不足
 $warning: #f1c40f; //身分證末碼
-
+@mixin pad {
+    @media (max-width:768px){
+        @content
+    }
+}
+@mixin iphoneX {
+    @media (max-width:420px) {
+        @content
+    }
+}
+.container{
+   height: 100vh;
+   width: 100%;
+   position: relative;
+}
+.navSide-icon {
+    position: absolute;
+    top: 130px;
+    left: 350px;
+    font-size: 24px;
+    background-color: $info;
+    padding: 20px 2px;
+    color: #fff;
+    border-radius: 0 4px 4px 0;
+    transition: all 0.3s;
+    a{
+        color: $secondary;
+    }
+    z-index: 1000;
+}
 .navSide {
     width: 350px;
-    z-index: 1px;
+    z-index: 1000 ;
     transition: all 0.3s;
-
+    top: 0;
+    bottom: 0;
+    position: absolute;
     .navSide-header {
         background-color: $info;
         padding: 10px 20px;
         position: relative;
-        
-        .navSide-icon {
-            position: absolute;
-            bottom: -72px;
-            right: -18px;
-            font-size: 24px;
-            background-color: $info;
-            padding: 20px 2px;
-            color: #fff;
-            border-radius: 0 4px 4px 0;
-            a{
-                color: $secondary;
-            }
-        }
         h2 {
             float: left;
         }
@@ -71,9 +89,8 @@ $warning: #f1c40f; //身分證末碼
             right: 12px;
             top: 10px;
             font-size: 20px;
-            
         }
-        #city{
+        #county{
             border: 0;
             outline: 0;
             padding: 5px 10px;
@@ -81,7 +98,7 @@ $warning: #f1c40f; //身分證末碼
             width: 49%;
             text-align: center;
         }
-        #area{
+        #town{
             border: 0;
             outline: 0;
             padding: 5px 10px;
@@ -90,7 +107,6 @@ $warning: #f1c40f; //身分證末碼
             text-align: center;
         }
     }
-   
     .navSide-body {
         overflow-y: scroll;
         height: 80vh;
@@ -98,6 +114,7 @@ $warning: #f1c40f; //身分證末碼
             width: 100%;
             padding: 10px 20px;
             border-bottom: 1px solid $secondary;
+            background-color: #fff;
             p {
                 padding: 4px 0;
             }
@@ -114,21 +131,72 @@ $warning: #f1c40f; //身分證末碼
             }
         }
     }
+}
+
+.hide{
+    width: 0;
+    overflow: hidden;
+}
+.reduce{
+    left: 0;
     
 }
-.hide {
-    width: 0;
-    height: 0;
-    .navSide-header {
-        padding: 0;
-        h2 {
-            display: none;
-        }
+
+.mapClass{
+    max-width: calc( 100% - 350px);
+    height: 100%;
+    transform: translateX(350px);
+    transition: all 0.5s;
+}
+.zoom{
+    max-width: 100%;
+    transform: translateX(0);
+}
+.loader{
+    position: absolute;    
+    z-index: 2000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#33CCFF;
+    .loader-body{
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border: 16px solid #ffffff;
+        border-radius: 50%;
+        border-top: 16px solid 	#77FFEE;
+        animation: loading 1s linear infinite;
     }
-    #area{
-        display: none;
+}
+@keyframes loading{
+    0% {
+        transform: rotate(0deg);
     }
-    #city{
-        display: none;
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@include pad{
+    .navSide {
+        width: 220px;
+    }
+    .mapClass{
+        max-width: calc( 100% - 220px);
+        height: 100%;
+        transform: translateX(220px);
+    }
+}
+@include iphoneX{
+    .navSide {
+        width: 150px;
+    }
+    .mapClass{
+        max-width: calc( 100% - 150px);
+        height: 100%;
+        transform: translateX(150px);
     }
 }
