@@ -227,12 +227,14 @@ const iconColor = {
             'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
         shadowUrl:
             'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            ...iconsConfig,
     }),
     gray: new L.Icon({
         iconUrl:
             'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
         shadowUrl:
             'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        ...iconsConfig,
     })
 }
 //新增游標以及回收游標
