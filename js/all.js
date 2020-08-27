@@ -47,7 +47,12 @@ let town = document.querySelector('#town');//城鎮選單
     }
 }())
 //監聽
-search.addEventListener('keypress', searchCounty);
+search.addEventListener('keypress', ()=>{
+    console.log(event.keyCode ===13)
+    if(event.keyCode ===13){
+        searchCounty()
+    }
+});
 searchLabel.addEventListener('click', searchCounty);
 county.addEventListener('change', countySelect);
 town.addEventListener('change', townSelect);
@@ -100,7 +105,7 @@ function hide() {
 }
 //input searchIcon
 function searchCounty() {
-    event.preventDefault;
+    event.preventDefault();
     //值等於input裡面的value
     let searchTxt = search.value;
     //空白就提醒 有值就回傳
